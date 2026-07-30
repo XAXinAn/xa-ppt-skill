@@ -1,12 +1,7 @@
-# Ignore everything by default.
-*
+# Generated output and caches
+output/
+**/__pycache__/
+*.pyc
 
-# Keep the ignore rule itself and the skill source.
-!.gitignore
-!/.claude
-!.claude/
-!/.claude/skills
-!.claude/skills/
-!/.claude/skills/xa-ppt
-!.claude/skills/xa-ppt/
-!.claude/skills/xa-ppt/skill.md
+# Local-only settings
+.claude/settings.local.json

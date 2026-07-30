@@ -1,0 +1,23 @@
+{
+  "id": "grid-cols-3",
+  "name": "网格布局-3列2行",
+  "type": "content",
+  "description": "3列2行网格布局",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "structure": { "columns": 3, "rows": 2 },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1></div><div class=\"slide-body\">{{#cards}}<div class=\"card\"><div class=\"line\"><div class=\"main\"><span class=\"bullet\">▸</span> {{title}}</div><div class=\"sub\">{{subtitle}}</div></div></div>{{/cards}}</div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.grid": { "display": "flex", "flex-direction": "column" },
+    ".slide.grid .slide-header": { "padding-bottom": "18px" },
+    ".slide.grid .slide-header h1": { "font-size": "var(--slide-title-size)", "color": "var(--title)", "border-bottom": "3px solid var(--accent)", "margin": "0", "width": "100%", "letter-spacing": "-0.03em" },
+    ".slide.grid .slide-body": { "flex": "1", "display": "grid", "grid-template-columns": "repeat(3, 1fr)", "grid-template-rows": "repeat(2, 1fr)", "gap": "28px", "padding": "18px 0 20px", "counter-reset": "grid-card" },
+    ".slide.grid .card": { "position": "relative", "overflow": "hidden", "background": "linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)), var(--surface)", "padding": "28px 24px 24px", "border-radius": "18px", "border": "1px solid rgba(121, 192, 255, 0.12)", "border-top": "4px solid var(--accent)", "display": "flex", "flex-direction": "column", "justify-content": "center", "box-shadow": "0 14px 30px rgba(0, 0, 0, 0.18)", "counter-increment": "grid-card" },
+    ".slide.grid .card::after": { "content": "counter(grid-card, decimal-leading-zero)", "position": "absolute", "right": "18px", "top": "16px", "font-size": "12px", "letter-spacing": "0.22em", "color": "rgba(255, 255, 255, 0.24)" },
+    ".slide.grid .line": { "display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "flex-start", "gap": "12px", "font-size": "var(--slide-heading-size)", "color": "var(--text)" },
+    ".slide.grid .line .main": { "display": "flex", "align-items": "center", "font-size": "24px", "line-height": "1.18", "font-weight": "bold", "color": "var(--heading)" },
+    ".slide.grid .line .bullet": { "color": "var(--accent)", "width": "var(--slide-bullet-width)", "flex-shrink": "0", "font-size": "20px" },
+    ".slide.grid .line .sub": { "font-size": "var(--slide-subtitle-size)", "color": "var(--muted)", "margin-left": "var(--slide-subtitle-indent)", "margin-top": "0", "line-height": "1.45" },
+    ".slide.grid .slide-footer": { "padding-top": "20px", "font-size": "var(--slide-footer-size)", "color": "var(--muted)", "text-align": "right" }
+  }
+}

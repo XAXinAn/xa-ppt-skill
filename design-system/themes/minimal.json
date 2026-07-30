@@ -1,0 +1,22 @@
+{
+  "id": "minimal",
+  "name": "极简",
+  "description": "适合极简展示",
+  "colors": {
+    "bg": "#FAFAFA",
+    "title": "#000000",
+    "heading": "#222222",
+    "text": "#333333",
+    "accent": "#000000",
+    "accentSecondary": "#555555",
+    "muted": "#AAAAAA",
+    "divider": "#DDDDDD",
+    "surface": "#FFFFFF"
+  },
+  "typography": {
+    "fontFamily": "Microsoft YaHei, PingFang SC, sans-serif",
+    "titleSize": { "min": 36, "max": 48, "default": 44 },
+    "headingSize": { "min": 24, "max": 32, "default": 28 },
+    "bodySize": { "min": 16, "max": 24, "default": 20 }
+  }
+}

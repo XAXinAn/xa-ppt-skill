@@ -1,0 +1,97 @@
+{
+  "id": "content-col",
+  "name": "纵向正文",
+  "type": "content",
+  "description": "纵向单列卡片",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "constraints": { "cardCount": { "min": 3, "max": 5 } },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1>{{#subtitle}}<div class=\"slide-subtitle\">{{subtitle}}</div>{{/subtitle}}</div><div class=\"slide-body\">{{#items}}<div class=\"card\"><div class=\"card-copy\"><div class=\"card-title\">{{title}}</div>{{#subtitle}}<div class=\"card-subtitle\">{{subtitle}}</div>{{/subtitle}}</div></div>{{/items}}{{#cards}}<div class=\"card\"><div class=\"card-copy\"><div class=\"card-title\">{{title}}</div>{{#subtitle}}<div class=\"card-subtitle\">{{subtitle}}</div>{{/subtitle}}</div></div>{{/cards}}</div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.content-col": {
+      "display": "flex",
+      "flex-direction": "column"
+    },
+    ".slide.content-col .slide-header": {
+      "padding-bottom": "18px"
+    },
+    ".slide.content-col .slide-header h1": {
+      "font-size": "var(--slide-title-size)",
+      "color": "var(--title)",
+      "border-bottom": "3px solid var(--accent)",
+      "margin": "0",
+      "width": "100%",
+      "letter-spacing": "-0.03em"
+    },
+    ".slide.content-col .slide-subtitle": {
+      "padding-top": "16px",
+      "font-size": "var(--slide-subtitle-size)",
+      "color": "var(--muted)"
+    },
+    ".slide.content-col .slide-body": {
+      "flex": "1",
+      "display": "flex",
+      "flex-direction": "column",
+      "gap": "14px",
+      "padding": "12px 0 14px",
+      "justify-content": "flex-start",
+      "min-height": "0",
+      "counter-reset": "content-card"
+    },
+    ".slide.content-col .card": {
+      "position": "relative",
+      "overflow": "hidden",
+      "background": "linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)), var(--surface)",
+      "padding": "24px 30px 22px 34px",
+      "border-radius": "18px",
+      "border": "1px solid rgba(88, 166, 255, 0.10)",
+      "border-left": "4px solid var(--accent)",
+      "flex": "1 1 0",
+      "min-height": "0",
+      "width": "100%",
+      "display": "flex",
+      "align-items": "stretch",
+      "box-shadow": "0 16px 34px rgba(0, 0, 0, 0.22)",
+      "counter-increment": "content-card"
+    },
+    ".slide.content-col .card::after": {
+      "content": "counter(content-card, decimal-leading-zero)",
+      "position": "absolute",
+      "right": "20px",
+      "top": "14px",
+      "font-size": "12px",
+      "letter-spacing": "0.22em",
+      "color": "rgba(255, 255, 255, 0.26)"
+    },
+    ".slide.content-col .card-copy": {
+      "display": "flex",
+      "flex-direction": "column",
+      "justify-content": "center",
+      "gap": "8px",
+      "min-height": "0",
+      "width": "100%"
+    },
+    ".slide.content-col .card-title": {
+      "font-size": "var(--slide-heading-size)",
+      "line-height": "1.18",
+      "color": "var(--title)",
+      "font-weight": "bold",
+      "width": "100%",
+      "letter-spacing": "-0.02em",
+      "min-width": "0"
+    },
+    ".slide.content-col .card-subtitle": {
+      "font-size": "var(--slide-subtitle-size)",
+      "color": "var(--muted)",
+      "line-height": "1.5",
+      "width": "100%",
+      "min-width": "0"
+    },
+    ".slide.content-col .slide-footer": {
+      "padding-top": "14px",
+      "font-size": "var(--slide-footer-size)",
+      "color": "var(--muted)",
+      "text-align": "right"
+    }
+  }
+}

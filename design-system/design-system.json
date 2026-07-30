@@ -1,0 +1,208 @@
+{
+  "version": "1.0",
+  "name": "xa-ppt-skill 设计系统",
+  "description": "组件-布局-主题设计系统，生成图片嵌入式 PPT",
+
+  "themeDefaults": {
+    "slide": {
+      "width": 1920,
+      "height": 1080,
+      "padding": 60
+    },
+    "header": {
+      "paddingBottom": 20,
+      "border": { "type": "line", "color": "accent", "width": 3 }
+    },
+    "footer": {
+      "paddingTop": 20,
+      "align": "right"
+    }
+  },
+
+  "presentationDefaults": {
+    "typography": {
+      "coverTitle": 88,
+      "coverSubtitle": 36,
+      "sectionTitle": 64,
+      "cardTitle": 40,
+      "body": 28,
+      "tableBody": 24,
+      "tableHeader": 28,
+      "footer": 18,
+      "subtitle": 26
+    },
+    "slidePadding": {
+      "x": 80,
+      "y": 72
+    },
+    "slideSize": {
+      "width": 1920,
+      "height": 1080
+    },
+    "componentDefaults": {
+      "card": {
+        "paddingX": 36,
+        "paddingY": 28,
+        "radius": 12
+      },
+      "content": {
+        "stackGap": 8,
+        "bulletWidth": 50,
+        "subtitleIndent": 50
+      }
+    },
+    "alignment": {
+      "cover": "center",
+      "ending": "center",
+      "content": "vertical-center-left",
+      "case": "vertical-center-left"
+    }
+  },
+
+  "renderingDefaults": {
+    "screenshotTarget": ".slide",
+    "clearOutputBeforeRun": true,
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+
+  "guardrails": [
+    {
+      "id": "text-scale-unification",
+      "problem": "字号分散",
+      "rule": "正文、案例、目录、封面字号必须由 presentationDefaults 统一给出，不在单页里随意写死。"
+    },
+    {
+      "id": "vertical-center-left",
+      "problem": "内容偏上且横向居中",
+      "rule": "正文卡片默认垂直居中，文字保持左对齐；只有封面和结尾允许整体居中。"
+    },
+    {
+      "id": "screenshot-target",
+      "problem": "截图白边",
+      "rule": "渲染阶段只截取 .slide 元素，禁止 full_page 截图。"
+    },
+    {
+      "id": "layout-selection-first",
+      "problem": "内容换了但版式还像固定模板",
+      "rule": "先按内容类型选布局，再填内容；对比、流程、结论、表格优先走专用布局，不要默认塞进 content-col。"
+    }
+  ],
+
+  "regressionRules": [
+    {
+      "id": "font-scale-unified",
+      "symptom": "字号大小不统一",
+      "source": "部分布局把标题、正文、说明文字写成了自己的固定字号。",
+      "systemRule": "正文类字号必须来自 presentationDefaults.typography，避免每个布局各写一套基线。",
+      "enforcement": "layout CSS 优先引用 CSS 变量，validator 会检查 content/layout 文件中是否仍有明显的硬编码字号。"
+    },
+    {
+      "id": "crop-boundary",
+      "symptom": "截图上下有白框",
+      "source": "渲染整页或浏览器视口，而不是幻灯片本体。",
+      "systemRule": "渲染阶段只允许截取 .slide。",
+      "enforcement": "renderingDefaults.screenshotTarget 必须保持为 .slide。"
+    },
+    {
+      "id": "vertical-center-left",
+      "symptom": "卡片看起来偏上，或文字整体居中",
+      "source": "把正文卡片当成整块内容居中处理。",
+      "systemRule": "正文与案例页默认 vertical-center-left: 卡片内容垂直居中，文本保持左对齐，主副标题共用同一缩进。",
+      "enforcement": "cards-left-1-right-2 是 canonical case-study layout，validator 会检查它的对齐约束。"
+    },
+    {
+      "id": "card-vertical-centering",
+      "symptom": "比较页、流程页或卡片页的文字贴上，视觉重心不在中线",
+      "source": "卡片已经撑满容器，但内容栈没有回到垂直居中位置。",
+      "systemRule": "comparison、process、cards-*、grid-* 这类卡片布局必须先让容器吃满可用高度，再让内容栈垂直居中，文本保持左对齐。",
+      "enforcement": "布局 CSS 应显式设置 `justify-content: center`，并避免用单纯 padding 假装居中。"
+    },
+    {
+      "id": "table-full-height",
+      "symptom": "表格缩在上方，下半部分留出大块空白",
+      "source": "table-shell / table / tbody / tr 没有形成完整的伸展链路。",
+      "systemRule": "表格页必须让 table-shell、table、tbody、tr 依次吃满 slide-body 的剩余高度，行高随可用空间分配，第一列保持稳定宽度。",
+      "enforcement": "table 布局校验会检查满高结构和列宽约束，避免回到自然内容高度排版。"
+    },
+    {
+      "id": "hero-wrap-width",
+      "symptom": "hero 页面标题过早换行",
+      "source": "hero-statement 的包裹宽度过窄，导致长标题很快断行。",
+      "systemRule": "hero-statement 允许根据标题长度放宽 wrapper 和 h1 的最大宽度，优先通过宽度调整控制换行，不要先缩字号。",
+      "enforcement": "hero 页面在视觉审阅时要比对预期换行数，长结论页默认至少保证单次稳定换行。"
+    },
+    {
+      "id": "missing-padding",
+      "symptom": "看起来没有 margin 和 padding",
+      "source": "slide、card、文字栈的留白分散写在各个布局里。",
+      "systemRule": "slidePadding 和 cardDefaults 必须统一来自 design system。",
+      "enforcement": "base CSS 与布局 CSS 都读取 presentationDefaults 生成的变量。"
+    },
+    {
+      "id": "transient-resource-cache",
+      "symptom": "output/images/resources 等临时素材目录残留",
+      "source": "素材抓取或预处理步骤留下了资源缓存，但它们不是最终 PPT 的交付文件。",
+      "systemRule": "最终交付目录只保留 slide PNG、manifest 和 PPTX；resources 这类缓存默认视为临时文件，任务结束前清理。",
+      "enforcement": "manifest 不应引用资源缓存目录，交付前检查 output/images 下是否还有非 slide 资源。"
+    }
+  ],
+
+  "themeMatchRules": [
+    { "keywords": ["技术", "架构", "代码", "开发", "AI", "服务器", "网络", "微服务", "容器"], "theme": "tech" },
+    { "keywords": ["商务", "汇报", "介绍", "计划", "总结", "年度"], "theme": "simple" },
+    { "keywords": ["极简", "纯展示", "艺术"], "theme": "minimal" }
+  ],
+
+  "layoutSelectRules": [
+    { "condition": "封面", "layout": "cover" },
+    { "condition": "结尾", "layout": "ending" },
+    { "condition": "目录", "layout": "toc" },
+    { "condition": "A/B 对比", "layout": "comparison" },
+    { "condition": "核心观点", "layout": "hero-statement" },
+    { "condition": "流程/步骤", "layout": "process" },
+    { "condition": "横向单行要点", "layout": "content-row" },
+    { "condition": "纵向单列要点", "layout": "content-col" },
+    { "condition": "上下分栏对比", "layout": "cards-top-*-bottom-*" },
+    { "condition": "左右分栏对比", "layout": "cards-left-*-right-*" },
+    { "condition": "2×2 网格", "layout": "grid-cols-2" },
+    { "condition": "3×2 网格", "layout": "grid-cols-3" },
+    { "condition": "时间线", "layout": "timeline" },
+    { "condition": "表格", "layout": "table" }
+  ],
+
+  "layouts": {
+    "cover": { "file": "layouts/cover.json" },
+    "ending": { "file": "layouts/ending.json" },
+    "toc": { "file": "layouts/toc.json" },
+    "comparison": { "file": "layouts/comparison.json" },
+    "hero-statement": { "file": "layouts/hero-statement.json" },
+    "process": { "file": "layouts/process.json" },
+    "content-row": { "file": "layouts/content-row.json" },
+    "content-col": { "file": "layouts/content-col.json" },
+    "cards-top-1-bottom-2": { "file": "layouts/cards-top-1-bottom-2.json" },
+    "cards-top-1-bottom-3": { "file": "layouts/cards-top-1-bottom-3.json" },
+    "cards-top-2-bottom-1": { "file": "layouts/cards-top-2-bottom-1.json" },
+    "cards-top-2-bottom-3": { "file": "layouts/cards-top-2-bottom-3.json" },
+    "cards-top-3-bottom-1": { "file": "layouts/cards-top-3-bottom-1.json" },
+    "cards-top-3-bottom-2": { "file": "layouts/cards-top-3-bottom-2.json" },
+    "cards-left-1-right-2": { "file": "layouts/cards-left-1-right-2.json" },
+    "cards-left-1-right-3": { "file": "layouts/cards-left-1-right-3.json" },
+    "cards-left-2-right-1": { "file": "layouts/cards-left-2-right-1.json" },
+    "cards-left-2-right-3": { "file": "layouts/cards-left-2-right-3.json" },
+    "cards-left-3-right-1": { "file": "layouts/cards-left-3-right-1.json" },
+    "cards-left-3-right-2": { "file": "layouts/cards-left-3-right-2.json" },
+    "grid-cols-2": { "file": "layouts/grid-cols-2.json" },
+    "grid-cols-3": { "file": "layouts/grid-cols-3.json" },
+    "timeline": { "file": "layouts/timeline.json" },
+    "table": { "file": "layouts/table.json" }
+  },
+
+  "themes": {
+    "tech": { "file": "themes/tech.json" },
+    "simple": { "file": "themes/simple.json" },
+    "minimal": { "file": "themes/minimal.json" }
+  }
+}

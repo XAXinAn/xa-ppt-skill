@@ -1,0 +1,72 @@
+{
+  "id": "toc",
+  "name": "目录",
+  "type": "toc",
+  "description": "目录页，列出章节",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1>{{#subtitle}}<div class=\"slide-subtitle\">{{subtitle}}</div>{{/subtitle}}</div><div class=\"slide-body\">{{#items}}<div class=\"line\"><span class=\"num\">{{num}}</span><div class=\"content\"><div class=\"name\">{{name}}</div>{{#desc}}<div class=\"desc\">{{desc}}</div>{{/desc}}</div></div>{{/items}}</div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.toc": {
+      "display": "flex",
+      "flex-direction": "column"
+    },
+    ".slide.toc .slide-header": {
+      "min-height": "86px",
+      "display": "flex",
+      "align-items": "flex-end",
+      "padding-bottom": "6px"
+    },
+    ".slide.toc .slide-header h1": {
+      "font-size": "var(--slide-title-size)",
+      "color": "var(--title)",
+      "border-bottom": "3px solid var(--accent)",
+      "margin": "0",
+      "width": "100%"
+    },
+    ".slide.toc .slide-subtitle": {
+      "padding-top": "16px",
+      "font-size": "var(--slide-subtitle-size)",
+      "color": "var(--muted)"
+    },
+    ".slide.toc .slide-body": {
+      "flex": "1",
+      "display": "flex",
+      "flex-direction": "column"
+    },
+    ".slide.toc .slide-body .line": {
+      "flex": "1",
+      "display": "flex",
+      "align-items": "center",
+      "font-size": "var(--slide-heading-size)",
+      "color": "var(--text)"
+    },
+    ".slide.toc .slide-body .line .num": {
+      "color": "var(--accent)",
+      "font-weight": "bold",
+      "width": "100px",
+      "flex-shrink": "0"
+    },
+    ".slide.toc .slide-body .line .content": {
+      "display": "flex",
+      "flex-direction": "column",
+      "gap": "8px"
+    },
+    ".slide.toc .slide-body .line .name": {
+      "font-size": "var(--slide-heading-size)",
+      "color": "var(--text)"
+    },
+    ".slide.toc .slide-body .line .desc": {
+      "font-size": "var(--slide-subtitle-size)",
+      "color": "var(--muted)"
+    },
+    ".slide.toc .slide-footer": {
+      "height": "50px",
+      "display": "flex",
+      "align-items": "center",
+      "justify-content": "flex-end",
+      "font-size": "var(--slide-footer-size)",
+      "color": "var(--muted)"
+    }
+  }
+}

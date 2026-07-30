@@ -1,0 +1,22 @@
+{
+  "id": "simple",
+  "name": "简约商务",
+  "description": "适合商务汇报、介绍",
+  "colors": {
+    "bg": "#FFFFFF",
+    "title": "#1A1A1A",
+    "heading": "#333333",
+    "text": "#4A4A4A",
+    "accent": "#0066CC",
+    "accentSecondary": "#3399FF",
+    "muted": "#999999",
+    "divider": "#E5E5E5",
+    "surface": "#F5F5F5"
+  },
+  "typography": {
+    "fontFamily": "Microsoft YaHei, PingFang SC, sans-serif",
+    "titleSize": { "min": 36, "max": 48, "default": 44 },
+    "headingSize": { "min": 24, "max": 32, "default": 28 },
+    "bodySize": { "min": 16, "max": 24, "default": 20 }
+  }
+}

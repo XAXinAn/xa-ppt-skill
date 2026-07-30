@@ -1,0 +1,28 @@
+{
+  "id": "table",
+  "name": "表格",
+  "type": "content",
+  "description": "表格数据展示",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "constraints": { "columns": { "min": 2, "max": 5 }, "rows": { "min": 2, "max": 6 } },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1>{{#subtitle}}<div class=\"slide-subtitle\">{{subtitle}}</div>{{/subtitle}}</div><div class=\"slide-body\"><div class=\"table-shell\"><table><thead><tr>{{#headers}}<th>{{.}}</th>{{/headers}}</tr></thead><tbody>{{#rows}}<tr>{{#cells}}<td>{{.}}</td>{{/cells}}</tr>{{/rows}}</tbody></table></div></div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.table": { "display": "flex", "flex-direction": "column" },
+    ".slide.table .slide-header": { "padding-bottom": "18px" },
+    ".slide.table .slide-header h1": { "font-size": "var(--slide-title-size)", "color": "var(--title)", "border-bottom": "3px solid var(--accent)", "margin": "0", "width": "100%", "letter-spacing": "-0.03em" },
+    ".slide.table .slide-subtitle": { "padding-top": "16px", "font-size": "var(--slide-subtitle-size)", "color": "var(--muted)" },
+    ".slide.table .slide-body": { "flex": "1", "display": "flex", "flex-direction": "column", "min-height": "0", "padding": "18px 0 20px" },
+    ".slide.table .table-shell": { "flex": "1", "width": "100%", "display": "flex", "flex-direction": "column", "border": "1px solid rgba(88, 166, 255, 0.10)", "border-radius": "18px", "overflow": "hidden", "box-shadow": "0 16px 34px rgba(0, 0, 0, 0.20)", "background": "var(--surface)" },
+    ".slide.table table": { "width": "100%", "height": "100%", "display": "flex", "flex-direction": "column", "border-collapse": "collapse", "table-layout": "fixed", "font-size": "var(--slide-table-body-size)" },
+    ".slide.table thead": { "display": "block", "flex": "0 0 auto" },
+    ".slide.table tbody": { "display": "flex", "flex": "1 1 auto", "flex-direction": "column", "min-height": "0" },
+    ".slide.table tr": { "display": "grid", "grid-template-columns": "170px minmax(0, 1fr)", "min-height": "0", "width": "100%", "flex": "1 1 0" },
+    ".slide.table th": { "background": "linear-gradient(180deg, rgba(88, 166, 255, 0.95), rgba(88, 166, 255, 0.86))", "color": "#fff", "padding": "18px 20px", "text-align": "left", "font-weight": "bold", "line-height": "1.25", "font-size": "var(--slide-table-header-size)", "display": "flex", "align-items": "center", "min-width": "0" },
+    ".slide.table td": { "background": "rgba(255, 255, 255, 0.02)", "color": "var(--text)", "padding": "16px 20px", "border-bottom": "1px solid var(--divider)", "line-height": "1.45", "word-break": "break-word", "font-size": "var(--slide-table-body-size)", "display": "flex", "align-items": "center", "min-width": "0" },
+    ".slide.table tbody tr:nth-child(even) td": { "background": "rgba(255, 255, 255, 0.04)" },
+    ".slide.table tr:last-child td": { "border-bottom": "none" },
+    ".slide.table th:first-child, .slide.table td:first-child": { "color": "var(--heading)" },
+    ".slide.table .slide-footer": { "padding-top": "14px", "font-size": "var(--slide-footer-size)", "color": "var(--muted)", "text-align": "right" }
+  }
+}

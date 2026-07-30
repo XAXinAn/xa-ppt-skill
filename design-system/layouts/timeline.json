@@ -1,0 +1,23 @@
+{
+  "id": "timeline",
+  "name": "时间线",
+  "type": "content",
+  "description": "时间线展示",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "constraints": { "nodeCount": { "min": 3, "max": 5 } },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1></div><div class=\"slide-body\"><div class=\"timeline-container\">{{#nodes}}<div class=\"node\"><div class=\"node-dot\"></div><div class=\"node-title\">{{title}}</div><div class=\"node-desc\">{{desc}}</div></div>{{/nodes}}</div></div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.timeline": { "display": "flex", "flex-direction": "column" },
+    ".slide.timeline .slide-header": { "padding-bottom": "20px" },
+    ".slide.timeline .slide-header h1": { "font-size": "var(--slide-title-size)", "color": "var(--title)", "border-bottom": "3px solid var(--accent)", "margin": "0", "width": "100%" },
+    ".slide.timeline .slide-body": { "flex": "1", "display": "flex", "flex-direction": "column", "justify-content": "center", "padding": "20px 0" },
+    ".slide.timeline .timeline-container": { "display": "flex", "align-items": "flex-start", "justify-content": "space-between", "gap": "16px", "padding": "0 5%", "position": "relative" },
+    ".slide.timeline .timeline-container::before": { "content": "\"\"", "position": "absolute", "top": "36px", "left": "5%", "right": "5%", "height": "4px", "background": "var(--accent)", "z-index": "0" },
+    ".slide.timeline .node": { "display": "flex", "flex-direction": "column", "align-items": "flex-start", "flex": "1 1 0", "min-width": "0", "position": "relative", "z-index": "1" },
+    ".slide.timeline .node-dot": { "width": "36px", "height": "36px", "border-radius": "50%", "background": "var(--accent)", "margin-bottom": "24px" },
+    ".slide.timeline .node-title": { "font-size": "var(--slide-heading-size)", "color": "var(--title)", "font-weight": "bold", "margin-bottom": "12px", "line-height": "1.2", "text-align": "left" },
+    ".slide.timeline .node-desc": { "font-size": "var(--slide-subtitle-size)", "color": "var(--muted)", "line-height": "1.5", "text-align": "left" },
+    ".slide.timeline .slide-footer": { "padding-top": "20px", "font-size": "var(--slide-footer-size)", "color": "var(--muted)", "text-align": "right" }
+  }
+}

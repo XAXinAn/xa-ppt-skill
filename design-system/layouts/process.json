@@ -1,0 +1,28 @@
+{
+  "id": "process",
+  "name": "Process",
+  "type": "process",
+  "description": "Step-by-step process or pipeline layout.",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "constraints": { "stepCount": { "min": 3, "max": 5 } },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1>{{#subtitle}}<div class=\"slide-subtitle\">{{subtitle}}</div>{{/subtitle}}</div><div class=\"slide-body\"><div class=\"process-track\">{{#steps}}<div class=\"step\"><div class=\"step-card\">{{#kicker}}<div class=\"step-kicker\">{{kicker}}</div>{{/kicker}}<div class=\"step-index\"></div><div class=\"step-title\">{{title}}</div><div class=\"step-desc\">{{desc}}</div></div></div>{{/steps}}</div></div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.process": { "display": "flex", "flex-direction": "column" },
+    ".slide.process .slide-header": { "padding-bottom": "18px" },
+    ".slide.process .slide-header h1": { "font-size": "var(--slide-title-size)", "color": "var(--title)", "border-bottom": "3px solid var(--accent)", "margin": "0", "width": "100%", "letter-spacing": "-0.03em" },
+    ".slide.process .slide-subtitle": { "padding-top": "16px", "font-size": "var(--slide-subtitle-size)", "color": "var(--muted)" },
+    ".slide.process .slide-body": { "flex": "1", "display": "flex", "flex-direction": "column", "justify-content": "center", "padding": "18px 0 20px" },
+    ".slide.process .process-track": { "display": "flex", "align-items": "stretch", "gap": "18px", "counter-reset": "step" },
+    ".slide.process .step": { "flex": "1", "min-width": "0", "position": "relative", "counter-increment": "step" },
+    ".slide.process .step:not(:last-child)::after": { "content": "\"\"", "position": "absolute", "right": "-11px", "top": "48px", "width": "22px", "height": "2px", "background": "linear-gradient(90deg, var(--accent), rgba(88, 166, 255, 0.08))", "transform": "translateY(-50%)" },
+    ".slide.process .step-card": { "height": "100%", "background": "linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)), var(--surface)", "padding": "30px 24px 24px", "border-radius": "18px", "display": "flex", "flex-direction": "column", "justify-content": "center", "gap": "14px", "border": "1px solid rgba(88, 166, 255, 0.10)", "box-shadow": "0 16px 34px rgba(0, 0, 0, 0.20)", "position": "relative", "overflow": "hidden" },
+    ".slide.process .step-card::before": { "content": "\"\"", "position": "absolute", "left": "0", "top": "0", "right": "0", "height": "4px", "background": "linear-gradient(90deg, rgba(88, 166, 255, 0.9), rgba(121, 192, 255, 0.25))" },
+    ".slide.process .step-kicker": { "font-size": "14px", "text-transform": "uppercase", "letter-spacing": "0.20em", "color": "var(--accent)" },
+    ".slide.process .step-index": { "width": "56px", "height": "56px", "border-radius": "999px", "background": "var(--accent)", "display": "flex", "align-items": "center", "justify-content": "center", "font-size": "24px", "font-weight": "bold", "color": "#fff", "box-shadow": "0 0 0 8px rgba(88, 166, 255, 0.10)" },
+    ".slide.process .step-index::before": { "content": "counter(step, decimal-leading-zero)" },
+    ".slide.process .step-title": { "font-size": "var(--slide-heading-size)", "line-height": "1.15", "font-weight": "bold", "color": "var(--title)", "letter-spacing": "-0.02em" },
+    ".slide.process .step-desc": { "font-size": "var(--slide-subtitle-size)", "line-height": "1.5", "color": "var(--muted)" },
+    ".slide.process .slide-footer": { "padding-top": "20px", "font-size": "var(--slide-footer-size)", "color": "var(--muted)", "text-align": "right" }
+  }
+}

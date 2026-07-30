@@ -1,0 +1,43 @@
+{
+  "id": "ending",
+  "name": "结尾",
+  "type": "ending",
+  "description": "结束页，无内容，无页码",
+  "zones": ["center"],
+  "footer": { "visible": false },
+  "html": "<div class=\"ending-wrap\"><h1>{{title}}</h1>{{#subtitle}}<h2>{{subtitle}}</h2>{{/subtitle}}{{#bullets}}<div class=\"bullet-line\">▸ {{.}}</div>{{/bullets}}</div>",
+  "css": {
+    ".slide.ending": {
+      "display": "flex",
+      "align-items": "center",
+      "justify-content": "center"
+    },
+    ".slide.ending .ending-wrap": {
+      "display": "flex",
+      "flex-direction": "column",
+      "align-items": "center",
+      "justify-content": "center",
+      "gap": "18px",
+      "width": "100%"
+    },
+    ".slide.ending h1": {
+      "font-size": "var(--slide-cover-title-size)",
+      "color": "var(--title)",
+      "font-weight": "bold",
+      "text-align": "center"
+    },
+    ".slide.ending h2": {
+      "font-size": "var(--slide-cover-subtitle-size)",
+      "color": "var(--muted)",
+      "font-weight": "normal",
+      "text-align": "center"
+    },
+    ".slide.ending .bullet-line": {
+      "font-size": "var(--slide-heading-size)",
+      "color": "var(--text)",
+      "text-align": "left",
+      "width": "min(960px, 100%)",
+      "line-height": "1.4"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "cover",
+  "name": "封面",
+  "type": "cover",
+  "description": "大标题居中，无内容，无页码",
+  "zones": ["center"],
+  "footer": { "visible": false },
+  "html": "<div><h1>{{title}}</h1><h2>{{subtitle}}</h2>{{#note}}<p>{{note}}</p>{{/note}}</div>",
+  "css": {
+    ".slide.cover": {
+      "display": "flex",
+      "align-items": "center",
+      "justify-content": "center"
+    },
+    ".slide.cover h1": {
+      "font-size": "var(--slide-cover-title-size)",
+      "color": "var(--title)",
+      "text-align": "center",
+      "font-weight": "bold"
+    },
+    ".slide.cover h2": {
+      "font-size": "var(--slide-cover-subtitle-size)",
+      "color": "var(--muted)",
+      "text-align": "center",
+      "margin-top": "24px",
+      "font-weight": "normal"
+    },
+    ".slide.cover p": {
+      "max-width": "980px",
+      "margin-top": "20px",
+      "font-size": "var(--slide-subtitle-size)",
+      "line-height": "1.6",
+      "color": "var(--muted)",
+      "text-align": "center"
+    }
+  }
+}

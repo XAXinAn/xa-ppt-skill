@@ -1,0 +1,22 @@
+{
+  "id": "tech",
+  "name": "科技风格",
+  "description": "适合技术分享、架构展示",
+  "colors": {
+    "bg": "#0D1117",
+    "title": "#FFFFFF",
+    "heading": "#E6EDF3",
+    "text": "#58A6FF",
+    "accent": "#58A6FF",
+    "accentSecondary": "#79C0FF",
+    "muted": "#8B949E",
+    "divider": "#29313A",
+    "surface": "#171D25"
+  },
+  "typography": {
+    "fontFamily": "Microsoft YaHei, PingFang SC, sans-serif",
+    "titleSize": { "min": 36, "max": 48, "default": 44 },
+    "headingSize": { "min": 24, "max": 32, "default": 28 },
+    "bodySize": { "min": 16, "max": 24, "default": 20 }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "cards-top-2-bottom-3",
+  "name": "上下卡片-上2下3",
+  "type": "content",
+  "description": "上排2个卡片，下排3个卡片",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "structure": { "topRow": { "cardCount": 2 }, "bottomRow": { "cardCount": 3 } },
+  "html": "<div class=\"slide cards\"><div class=\"slide-header\"><h1>{{title}}</h1></div><div class=\"slide-body\"><div class=\"row cards-2\">{{#topCards}}<div class=\"card\"><div class=\"line\"><div class=\"main\"><span class=\"bullet\">▸</span> {{title}}</div><div class=\"sub\">{{subtitle}}</div></div></div>{{/topCards}}</div><div class=\"row cards-3\">{{#bottomCards}}<div class=\"card\"><div class=\"line\"><div class=\"main\"><span class=\"bullet\">▸</span> {{title}}</div><div class=\"sub\">{{subtitle}}</div></div></div>{{/bottomCards}}</div></div><div class=\"slide-footer\">{{page}} / {{total}}</div></div>",
+  "css": {
+    ".slide.cards": { "display": "flex", "flex-direction": "column" },
+    ".slide.cards .slide-header": { "padding-bottom": "20px" },
+    ".slide.cards .slide-header h1": { "font-size": "var(--slide-title-size)", "color": "var(--title)", "border-bottom": "3px solid var(--accent)", "margin": "0", "width": "100%" },
+    ".slide.cards .slide-body": { "flex": "1", "display": "flex", "flex-direction": "column", "gap": "20px" },
+    ".slide.cards .row": { "display": "flex", "gap": "20px", "flex": "1" },
+    ".slide.cards .card": { "background": "var(--surface)", "padding": "var(--slide-card-padding-y) var(--slide-card-padding-x)", "border-radius": "var(--slide-card-radius)", "display": "flex", "flex-direction": "column", "justify-content": "center", "width": "100%" },
+    ".slide.cards .row.cards-2 .card": { "width": "50%" },
+    ".slide.cards .row.cards-3 .card": { "width": "33%" },
+    ".slide.cards .line": { "display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "flex-start", "gap": "var(--slide-content-stack-gap)", "height": "100%", "font-size": "var(--slide-heading-size)", "color": "var(--text)" },
+    ".slide.cards .line .main": { "display": "flex", "align-items": "center" },
+    ".slide.cards .line .bullet": { "color": "var(--accent)", "width": "var(--slide-bullet-width)", "flex-shrink": "0" },
+    ".slide.cards .line .sub": { "font-size": "var(--slide-subtitle-size)", "color": "var(--muted)", "margin-left": "var(--slide-subtitle-indent)", "margin-top": "0" },
+    ".slide.cards .slide-footer": { "padding-top": "20px", "font-size": "var(--slide-footer-size)", "color": "var(--muted)", "text-align": "right" }
+  }
+}

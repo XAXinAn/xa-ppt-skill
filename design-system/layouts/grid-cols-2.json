@@ -1,0 +1,22 @@
+{
+  "id": "grid-cols-2",
+  "name": "网格布局-2列2行",
+  "type": "content",
+  "description": "2列2行网格布局",
+  "zones": ["slide-header", "slide-body", "slide-footer"],
+  "footer": { "visible": true },
+  "structure": { "columns": 2, "rows": 2 },
+  "html": "<div class=\"slide-header\"><h1>{{title}}</h1></div><div class=\"slide-body\">{{#cards}}<div class=\"card\"><div class=\"line\"><div class=\"main\"><span class=\"bullet\">▸</span> {{title}}</div><div class=\"sub\">{{subtitle}}</div></div></div>{{/cards}}</div><div class=\"slide-footer\">{{page}} / {{total}}</div>",
+  "css": {
+    ".slide.grid": { "display": "flex", "flex-direction": "column" },
+    ".slide.grid .slide-header": { "padding-bottom": "20px" },
+    ".slide.grid .slide-header h1": { "font-size": "var(--slide-title-size)", "color": "var(--title)", "border-bottom": "3px solid var(--accent)", "margin": "0", "width": "100%" },
+    ".slide.grid .slide-body": { "flex": "1", "display": "grid", "grid-template-columns": "repeat(2, 1fr)", "grid-template-rows": "repeat(2, 1fr)", "gap": "40px", "padding": "20px 0" },
+    ".slide.grid .card": { "background": "var(--surface)", "padding": "var(--slide-card-padding-y) var(--slide-card-padding-x)", "border-radius": "var(--slide-card-radius)", "display": "flex", "flex-direction": "column", "justify-content": "center" },
+    ".slide.grid .line": { "display": "flex", "flex-direction": "column", "justify-content": "center", "align-items": "flex-start", "gap": "var(--slide-content-stack-gap)", "font-size": "var(--slide-heading-size)", "color": "var(--text)" },
+    ".slide.grid .line .main": { "display": "flex", "align-items": "center" },
+    ".slide.grid .line .bullet": { "color": "var(--accent)", "width": "var(--slide-bullet-width)", "flex-shrink": "0" },
+    ".slide.grid .line .sub": { "font-size": "var(--slide-subtitle-size)", "color": "var(--muted)", "margin-left": "var(--slide-subtitle-indent)", "margin-top": "0" },
+    ".slide.grid .slide-footer": { "padding-top": "20px", "font-size": "var(--slide-footer-size)", "color": "var(--muted)", "text-align": "right" }
+  }
+}

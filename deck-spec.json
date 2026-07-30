@@ -1,0 +1,567 @@
+{
+  "version": 1,
+  "source": "E:/develop/xa-ppt-skill/AI经验分享PPT大纲.md",
+  "slides": [
+    {
+      "layout_id": "cover",
+      "theme": "tech",
+      "data": {
+        "title": "ppt-skill AI 协作经验分享",
+        "subtitle": "从需求对齐到版本管理，这些坑帮我重新理解了 AI 协作",
+        "note": "实习中用 ppt-skill 做 AI 协作的具体经验"
+      }
+    },
+    {
+      "layout_id": "content-col",
+      "theme": "tech",
+      "data": {
+        "title": "背景",
+        "subtitle": "进公司前，我怎么看 AI",
+        "page": 2,
+        "total": 21,
+        "items": [
+          "AI 是日常办公自动化工具，写课程设计、论文直接让它产出 Word",
+          "从 0 做 Web 课程设计，说一步 AI 写一点代码，反复调整才能满意",
+          "当时认为 AI 就是个高级打字机，说清楚需求它吐结果，说不清就改",
+          "进了公司才发现，\"说一步做一步\"根本算不上真正的 AI 协作"
+        ]
+      }
+    },
+    {
+      "layout_id": "toc",
+      "theme": "tech",
+      "data": {
+        "title": "目录",
+        "page": 3,
+        "total": 21,
+        "items": [
+          {
+            "num": "01",
+            "name": "需求怎么对",
+            "desc": "先把文档写清楚，再让 AI 照着做，少走弯路"
+          },
+          {
+            "num": "02",
+            "name": "边界怎么定",
+            "desc": "从 MVP 开始，边放开边收回，找到稳定边界"
+          },
+          {
+            "num": "03",
+            "name": "效率怎么提",
+            "desc": "建立验证回路，AI 能看到结果，人能看到 AI 推理过程"
+          },
+          {
+            "num": "04",
+            "name": "版本怎么管",
+            "desc": "建立可恢复性机制，协作过程有存档，出问题可以回滚"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "comparison",
+      "theme": "tech",
+      "data": {
+        "title": "需求怎么对 — 问题",
+        "subtitle": "需求对齐，最容易踩的坑",
+        "page": 4,
+        "total": 21,
+        "leftCard": {
+          "tag": "口头对齐",
+          "title": "以为说清楚了",
+          "subtitle": "聊天记录看起来顺，但关键信息很容易丢。",
+          "points": [
+            "上下文会丢",
+            "理解会偏移",
+            "结果才暴露问题"
+          ]
+        },
+        "rightCard": {
+          "tag": "文档对齐",
+          "title": "先写下来再确认",
+          "subtitle": "把目标、范围和限制落在可检查的文档里。",
+          "points": [
+            "目标先固定",
+            "版本可回看",
+            "判断有依据"
+          ]
+        },
+        "summary": "真正的对齐不是把话说顺，而是把理解落成可检查的文字。"
+      }
+    },
+    {
+      "layout_id": "content-col",
+      "theme": "tech",
+      "data": {
+        "title": "需求怎么对 — 原因",
+        "subtitle": "为什么口头对齐总是跑偏？",
+        "page": 5,
+        "total": 21,
+        "items": [
+          "上下文会丢：AI 看到的上下文有限，没说的背景它不知道，上下压缩问题更明显",
+          "信息会损耗：想的、说的、AI 理解的，常常不是一回事，每层传递总有损失",
+          "AI 说自己理解了，不等于真的理解对了，最后要靠结果判断",
+          "不能只靠口头对齐，口头说得再顺也要落到文档上"
+        ]
+      }
+    },
+    {
+      "layout_id": "process",
+      "theme": "tech",
+      "data": {
+        "title": "需求怎么对 — 解决方式",
+        "subtitle": "让 AI 先把理解写下来",
+        "page": 6,
+        "total": 21,
+        "steps": [
+          {
+            "title": "需求说明",
+            "desc": "先确认产品目标，避免一开始就跑偏。"
+          },
+          {
+            "title": "需求分析",
+            "desc": "再核对技术判断，看方案有没有偏。"
+          },
+          {
+            "title": "设计分析",
+            "desc": "把系统怎么组织、怎么落地写清楚。"
+          },
+          {
+            "title": "用户确认",
+            "desc": "确认无误后再进入代码生成。"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "grid-cols-3",
+      "theme": "tech",
+      "data": {
+        "title": "需求怎么对 — 案例",
+        "subtitle": "案例：自动生成 PPT 的 skill",
+        "page": 7,
+        "total": 21,
+        "cards": [
+          {
+            "title": "场景",
+            "subtitle": "做能自动生成 PPT 的 skill，目标是输出 .pptx"
+          },
+          {
+            "title": "当时判断",
+            "subtitle": "觉得 AI 理解得差不多了，直接让它开搭"
+          },
+          {
+            "title": "失败现象",
+            "subtitle": "最后出来的是白底加几行字的 PPT"
+          },
+          {
+            "title": "根因",
+            "subtitle": "没搞清给谁用、什么算好、技术方案靠不靠谱、出错了怎么办，以为 python-pptx 脚本就够了"
+          },
+          {
+            "title": "修正",
+            "subtitle": "按三层标准让 AI 写出理解，逐条验证"
+          },
+          {
+            "title": "结果",
+            "subtitle": "确定 HTML 渲染方案，ppt-skill 到现在还在用"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "comparison",
+      "theme": "tech",
+      "data": {
+        "title": "边界怎么定 — 问题",
+        "subtitle": "边界定不好，两种常见结果",
+        "page": 8,
+        "total": 21,
+        "leftCard": {
+          "tag": "太死",
+          "title": "创意类任务框得太死",
+          "subtitle": "页面千篇一律，换内容也看不出差异。",
+          "points": [
+            "结构固定",
+            "表达重复",
+            "很难拉开节奏"
+          ]
+        },
+        "rightCard": {
+          "tag": "太松",
+          "title": "严谨任务框得太松",
+          "subtitle": "AI 容易放飞自我，排版和结构问题会一起冒出来。",
+          "points": [
+            "边界模糊",
+            "结果失控",
+            "返工变多"
+          ]
+        },
+        "summary": "真正要找的，不是简单收紧或放开，而是一个稳定又留有调整空间的边界。"
+      }
+    },
+    {
+      "layout_id": "hero-statement",
+      "theme": "tech",
+      "data": {
+        "title": "边界怎么定 — 原因",
+        "page": 9,
+        "total": 21,
+        "eyebrow": "边界原因",
+        "statement": "边界不是一次性设计完就结束，而是一次次校准出来的。",
+        "supporting": "准备得再充分，也总会碰到没想到的情况；AI 还不会主动提醒你规则有问题。",
+        "meta": "先跑 MVP，再边跑边补约束"
+      }
+    },
+    {
+      "layout_id": "process",
+      "theme": "tech",
+      "data": {
+        "title": "边界怎么定 — 解决方式",
+        "subtitle": "让人做挑刺的人，AI 在边界内做事",
+        "page": 10,
+        "total": 21,
+        "steps": [
+          {
+            "title": "硬约束",
+            "desc": "把必须保持一致的内容先写成规则。"
+          },
+          {
+            "title": "MVP 起步",
+            "desc": "先用最简结构跑一版，看问题会出在哪里。"
+          },
+          {
+            "title": "迭代加约束",
+            "desc": "发现哪里不对，就在哪一层补限制。"
+          },
+          {
+            "title": "人来拍板",
+            "desc": "最后由人判断边界是否收得住。"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "table",
+      "theme": "tech",
+      "data": {
+        "title": "边界怎么定 — 案例",
+        "subtitle": "同一个 skill，边界是怎么一步步收回来的",
+        "page": 11,
+        "total": 21,
+        "headers": [
+          "阶段",
+          "发生了什么"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "初始",
+              "组件和模板都写死，AI 只能往固定格子里填内容。"
+            ]
+          },
+          {
+            "cells": [
+              "放开",
+              "容器分割先限制正文区域，AI 能在容器里摆组件，也开放了更多样式参数。"
+            ]
+          },
+          {
+            "cells": [
+              "失控",
+              "生成开始过于随意，排版问题频出。"
+            ]
+          },
+          {
+            "cells": [
+              "收回",
+              "页眉、页脚和正文大框架重新固定下来。"
+            ]
+          },
+          {
+            "cells": [
+              "现在",
+              "正文区域在约束范围内选择布局、填充内容、调整样式变量。"
+            ]
+          },
+          {
+            "cells": [
+              "结果",
+              "页面表达比最初丰富，但仍然保留稳定边界。"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "comparison",
+      "theme": "tech",
+      "data": {
+        "title": "效率怎么提 — 问题",
+        "subtitle": "把 AI 当打字机用，最容易卡住",
+        "page": 12,
+        "total": 21,
+        "leftCard": {
+          "tag": "只靠文字",
+          "title": "AI 看不见自己生成的结果",
+          "subtitle": "只靠描述，很多问题只会在反复沟通里暴露。",
+          "points": [
+            "看不见渲染结果",
+            "看不见边界问题",
+            "容易原地打转"
+          ]
+        },
+        "rightCard": {
+          "tag": "看见结果",
+          "title": "把图片和文件拉回上下文",
+          "subtitle": "让 AI 直接面对它生成出来的东西。",
+          "points": [
+            "问题可见",
+            "反馈更短",
+            "调整更快"
+          ]
+        },
+        "summary": "高效的不是更多文字，而是更短的验证回路。"
+      }
+    },
+    {
+      "layout_id": "hero-statement",
+      "theme": "tech",
+      "data": {
+        "title": "效率怎么提 — 原因",
+        "page": 13,
+        "total": 21,
+        "eyebrow": "验证回路",
+        "statement": "根因不是文字不够长，而是没有建立验证回路。",
+        "supporting": "AI 看不见自己生成的结果，人也看不见 AI 的推理过程。",
+        "meta": "视觉任务要让 AI 直接看图"
+      }
+    },
+    {
+      "layout_id": "process",
+      "theme": "tech",
+      "data": {
+        "title": "效率怎么提 — 解决方式",
+        "subtitle": "建立验证回路",
+        "page": 14,
+        "total": 21,
+        "steps": [
+          {
+            "title": "生成",
+            "desc": "先产出页面内容和 HTML。"
+          },
+          {
+            "title": "可视化验证",
+            "desc": "直接看渲染结果，而不是只看文本。"
+          },
+          {
+            "title": "反馈",
+            "desc": "把看见的问题明确指出来。"
+          },
+          {
+            "title": "修正",
+            "desc": "根据反馈调整参数或结构。"
+          },
+          {
+            "title": "再生成",
+            "desc": "把验证和修正接成闭环。"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "grid-cols-3",
+      "theme": "tech",
+      "data": {
+        "title": "效率怎么提 — 案例",
+        "subtitle": "案例：校准组件安全字数上限",
+        "page": 15,
+        "total": 21,
+        "cards": [
+          {
+            "title": "当时做法",
+            "subtitle": "让 AI 凭感觉限制字数上限，看到问题再口头反馈"
+          },
+          {
+            "title": "结果",
+            "subtitle": "大量时间耗在\"字数太多了\"\"太少了\"\"挤出去了\"的沟通上"
+          },
+          {
+            "title": "根因",
+            "subtitle": "没有验证回路，纯文字模型看不到渲染结果"
+          },
+          {
+            "title": "修正做法",
+            "subtitle": "AI 生成后直接看图反馈，而不是口头描述"
+          },
+          {
+            "title": "效果",
+            "subtitle": "调字体大小直接看图比\"再大一点\"高效十倍；校准字数上限让 AI 看省略号溢出效果逐轮调整"
+          },
+          {
+            "title": "结果",
+            "subtitle": "安全字数上限一次校准到位，之前要反复多轮的调整 AI 一次就能处理"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "comparison",
+      "theme": "tech",
+      "data": {
+        "title": "版本怎么管 — 问题",
+        "subtitle": "AI 不会自己管版本",
+        "page": 16,
+        "total": 21,
+        "leftCard": {
+          "tag": "没有存档点",
+          "title": "不提 commit",
+          "subtitle": "AI 不会自己管版本，也不会提醒你该管版本了。",
+          "points": [
+            "不会主动留痕",
+            "出问题只能从头来",
+            "上下文一压缩就忘"
+          ]
+        },
+        "rightCard": {
+          "tag": "有机制",
+          "title": "把存档点写进流程",
+          "subtitle": "每个阶段都保留能回滚的节点。",
+          "points": [
+            "阶段结尾 commit",
+            "文档同步更新",
+            "问题可以恢复"
+          ]
+        },
+        "summary": "版本管理不是收尾动作，而是整个协作过程的一部分。"
+      }
+    },
+    {
+      "layout_id": "hero-statement",
+      "theme": "tech",
+      "data": {
+        "title": "版本怎么管 — 原因",
+        "page": 17,
+        "total": 21,
+        "eyebrow": "保存点",
+        "statement": "AI 工作流没有保存点概念，不补机制，它就会把协作过程抹平。",
+        "supporting": "人自己也容易忘，必须提前把存档点写进流程里。",
+        "meta": "先有可恢复性，再谈协作效率"
+      }
+    },
+    {
+      "layout_id": "process",
+      "theme": "tech",
+      "data": {
+        "title": "版本怎么管 — 解决方式",
+        "subtitle": "建立可恢复性机制",
+        "page": 18,
+        "total": 21,
+        "steps": [
+          {
+            "title": "存档点前置",
+            "desc": "每个阶段结尾先 commit 和更新文档。"
+          },
+          {
+            "title": "规则写入提示词",
+            "desc": "把“先改文档再改代码”“改动后主动 commit”写清楚。"
+          },
+          {
+            "title": "失败可回滚",
+            "desc": "出问题直接回到上一个存档点。"
+          },
+          {
+            "title": "人继续盯流程",
+            "desc": "版本管理不能只靠提醒。"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "table",
+      "theme": "tech",
+      "data": {
+        "title": "版本怎么管 — 案例",
+        "subtitle": ".codex 误删之后为什么必须有存档点",
+        "page": 19,
+        "total": 21,
+        "headers": [
+          "阶段",
+          "内容"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "背景",
+              "创意增强刚完成大改动，包括 section 机制、复合组件、安全字数上限。"
+            ]
+          },
+          {
+            "cells": [
+              "事件",
+              "以为 .codex 里的 skill 只是普通文件夹，清理空间时误删了快捷方式。"
+            ]
+          },
+          {
+            "cells": [
+              "结果",
+              "开发目录下文件全删，没有 commit，也没有文档。"
+            ]
+          },
+          {
+            "cells": [
+              "根因",
+              "协作过程没有存档点，缺少可恢复性机制。"
+            ]
+          },
+          {
+            "cells": [
+              "修正",
+              "每阶段结尾建立存档点（commit + 文档），并把 commit 规范写进系统提示词。"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "timeline",
+      "theme": "tech",
+      "data": {
+        "title": "总结",
+        "subtitle": "把 AI 协作收束成一条可执行的闭环",
+        "page": 20,
+        "total": 21,
+        "nodes": [
+          {
+            "title": "定义",
+            "desc": "先把需求写清楚，再让 AI 开始做事"
+          },
+          {
+            "title": "边界",
+            "desc": "从 MVP 起步，让 AI 在约束内发挥"
+          },
+          {
+            "title": "检查",
+            "desc": "生成后直接看结果，建立可视化验证回路"
+          },
+          {
+            "title": "修正",
+            "desc": "根据反馈快速迭代，避免来回空转"
+          },
+          {
+            "title": "留痕",
+            "desc": "每个阶段都有 commit 和文档，方便回滚"
+          }
+        ]
+      }
+    },
+    {
+      "layout_id": "ending",
+      "theme": "tech",
+      "data": {
+        "title": "谢谢观看",
+        "subtitle": "欢迎交流"
+      }
+    }
+  ]
+}
