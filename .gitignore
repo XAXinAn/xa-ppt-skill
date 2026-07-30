@@ -1,0 +1,12 @@
+# Ignore everything by default.
+*
+
+# Keep the ignore rule itself and the skill source.
+!.gitignore
+!/.claude
+!.claude/
+!/.claude/skills
+!.claude/skills/
+!/.claude/skills/xa-ppt
+!.claude/skills/xa-ppt/
+!.claude/skills/xa-ppt/skill.md
