@@ -1,0 +1,4 @@
+interface:
+  display_name: "XA PPT Skill"
+  short_description: "Generate, validate, and build PPT decks from deck-spec.json"
+  default_prompt: "Use $xa-ppt to generate or refine a PPT deck from deck-spec.json, keep the design system rules intact, and run the validation/render/build pipeline."

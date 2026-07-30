@@ -5,6 +5,7 @@ xa-ppt-skill 是一个通过自然语言生成图片嵌入式 PPT 的 skill 包�
 ## 核心入口
 
 - [skill 说明](./.claude/skills/xa-ppt/skill.md)
+- [Codex skill](./.codex/skills/xa-ppt/SKILL.md)
 - [设计系统](./design-system/design-system.json)
 - [页面级规格](./deck-spec.json)
 
@@ -34,7 +35,8 @@ python scripts/run_pipeline.py --stop-on-warn
 
 ## 目录说明
 
-- `.claude/skills/xa-ppt/skill.md`：面向 AI 的工作流与生成规则
+- `.claude/skills/xa-ppt/skill.md`：Claude 侧的完整工作流与生成规则
+- `.codex/skills/xa-ppt/SKILL.md`：Codex 侧的入口与最小工作流
 - `deck-spec.json`：当前主用的页面级中间规格文件
 - `design-system/`：主题、布局与回归约束
 - `schemas/`：结构校验 schema
