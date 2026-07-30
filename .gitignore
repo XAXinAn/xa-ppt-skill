@@ -3,5 +3,8 @@ output/
 **/__pycache__/
 *.pyc
 
+# Root-level docs are working notes and should not be published.
+/*.md
+
 # Local-only settings
 .claude/settings.local.json
